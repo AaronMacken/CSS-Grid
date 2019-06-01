@@ -1,0 +1,176 @@
+/* Basic CSS Grid Notes */
+
+/* Flex box vs Grid */
+
+/* Flex box is for 1 dimensional columns and rows */
+/* CSS Grid is for 2 dimensional columns and rows,
+     as will be displayed */
+
+
+/* Styling for visual comparisons */
+/* Each div has pink background */
+
+.wrapper div {
+  color: white;
+  background: pink;
+  padding: 1em;
+}
+/* Each Odd has purple */
+.wrapper div:nth-child(odd) {
+  background: purple;
+}
+
+
+
+
+
+
+
+/* ////// GRID /////// */
+
+/*---------------- Main col and Side bar w/ Percents ----------------------> */
+
+/*
+     1. Set the section to display as grid 
+     2. Set grid template columns
+          - Following divs will follow set grid scheme, i.e. 70% 30% scheme
+     3. grid-column-gap: 1em;
+          - Gap between column content
+          - works with grid-row-gap for row, grid-gap for all row/col
+
+
+*/
+
+/* .wrapper {
+     display:grid;
+     grid-template-columns: 70% 30%;
+} */
+
+
+
+
+
+
+/*- Styling Grid w/ Fractions - Fractions are the recommended use for CSS Grid -> */
+
+/* 
+     grid-template-columns:
+
+     1fr 1fr 1fr
+          - Split into even thirds
+     1fr 2fr 1fr
+          - Middle column is bigger
+     repeat(3, 1fr)
+          - same as 1fr 1fr 1fr, dries up the code
+     repeat(4, 1fr 2fr)
+          - same as   1fr 2fr   1fr 2fr   1fr 2fr   1fr 2fr
+
+
+     Height
+
+     grid-auto-rows: 100px;
+          - makes each of the rows a height of 100px
+          - By doing this content may overflow.. to fix this you can use
+               - grid-auto-rows: minmax(100px, auto);
+                    - minimum height of each element is 100px, but the row will stretch
+                    to fit the necessary content.
+
+
+     Nested grids
+          - within a grid element, you can create another grid and use all the same features.
+     
+*/
+
+
+/* .wrapper {
+     display: grid;
+     grid-template-columns: 1fr 2fr 1fr; - line was commented out
+     grid-template-columns: repeat(3, 1fr); 
+     grid-gap: 1em;
+     grid-auto-rows: minmax(100px, auto);
+} */
+
+
+
+/* ---------------------------- Flexbox + Grid ----------------------> */
+
+/* 
+     using flexbox w/ grid
+          - justify-items: start || center || end || stretch.
+               - stretch is default styling.
+          - align-items: start || center || end 
+          - justify || align-self: start || center || end 
+               - used on specific elements 
+
+
+
+*/
+
+
+
+
+
+/* ---------------------------- 2D Styling w/ Grid ----------------------> */
+
+/* https://www.youtube.com/watch?v=jV8B24rSN5o - 22:01 - Traversy Video Explanation
+
+     Grid has lines for columns and lines for rows.
+          A 3 column 2 row grid would have
+               - 4 vertical column lines, including the 'invisible' lines to the left
+                    & right of the columns
+               - 3 horizontal row lines, including the 'invisible' lines above and below of the rows
+
+     1. Set up basic grid display & templates
+     2. Set line span for individual elements
+          grid-row || col: 1/3 || 1/4
+               - This is not a fraction, but instead says start at line 1 and range to line 3 || 4
+               - You can also overlap elements without having to set any position properties
+          
+
+
+
+*/
+
+.wrapper {
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+     grid-auto-rows: minmax(100px, auto);
+     grid-gap: 2em;
+
+     /* padding & border added to better display grid lines */
+     padding: 50px;
+     border: 2px solid black;
+}
+
+.d1 {
+     grid-row: 1/2;
+     grid-column: 1/2;
+}
+
+.d2 {
+     grid-row: 1/2;
+     grid-column: 2/3;
+}
+
+.d3 {
+     grid-row: 1/3;
+     grid-column: 3/4;
+}
+
+.d4 {
+     grid-row: 2/3;
+     grid-column: 1/3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
